@@ -1,19 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# tinter <img src="man/figures/logo.png" align="right" width='15%'/>
+# tinter <img src="https://raw.githubusercontent.com/poissonconsulting/tinter/master/docs/logo.png"  align="right" width='15%'/>
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis build
 status](https://travis-ci.org/poissonconsulting/tinter.svg?branch=master)](https://travis-ci.org/poissonconsulting/tinter)
 [![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/poissonconsulting/tinter?branch=master&svg=true)](https://ci.appveyor.com/project/poissonconsulting/tinter)
+status](https://ci.appveyor.com/api/projects/status/github/sebdalgarno/tinter?branch=master&svg=true)](https://ci.appveyor.com/project/sebdalgarno/tinter)
 [![Coverage
 status](https://codecov.io/gh/poissonconsulting/tinter/branch/master/graph/badge.svg)](https://codecov.io/github/poissonconsulting/tinter?branch=master)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/tinter)](https://cran.r-project.org/package=tinter)
+![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/tinter)
 
 ### Introduction
 
@@ -30,42 +31,42 @@ Easily define:
 
 ``` r
 library(tinter)
-hex <- "#a6c2d8"
+hex <- "#335CAC"
 ```
 
-![](man/figures/README-colour-1.png)<!-- -->
+![](tools/README-colour-1.png)<!-- -->
 
 ``` r
 tinter(hex)
-#> [1] "#EDF2F7" "#DBE6EF" "#C9DAE7" "#B7CEDF" "#A6C2D8" "#849BAC" "#637481"
-#> [8] "#424D56" "#21262B"
+#> [1] "#D6DEEE" "#ADBDDD" "#849DCD" "#5B7CBC" "#335CAC" "#284989" "#1E3767"
+#> [8] "#142444" "#0A1222"
 ```
 
-![](man/figures/README-tinter-1.png)<!-- -->
+![](tools/README-tinter-1.png)<!-- -->
 
 ``` r
 tinter(hex, direction = "tints")
 ```
 
-![](man/figures/README-tints-1.png)<!-- -->
+![](tools/README-tints-1.png)<!-- -->
 
 ``` r
 tinter(hex, steps = 10)
 ```
 
-![](man/figures/README-steps-1.png)<!-- -->
+![](tools/README-steps-1.png)<!-- -->
 
 ``` r
 tinter(hex, steps = 10, crop = 7)
 ```
 
-![](man/figures/README-crop-1.png)<!-- -->
+![](tools/README-crop-1.png)<!-- -->
 
 ``` r
 tinter(hex, steps = 10, crop = 7, adjust = 0.4)
 ```
 
-![](man/figures/README-darken-1.png)<!-- -->
+![](tools/README-darken-1.png)<!-- -->
 
 ### Create a choropleth map
 
@@ -76,14 +77,14 @@ library(sf)
 nc <- st_read(system.file(package = "sf", "shape/nc.shp"))
 
 ggplot(data = nc) +
-  geom_sf(aes(fill = AREA), colour = "white", lwd = 0.05) +
+  geom_sf(aes(fill = AREA), colour = "white", lwd = 0.04) +
   # colours from tinter
   scale_fill_gradientn(colours = tinter(hex)) +
   theme_void() +
   coord_sf(datum = NA)
 ```
 
-![](man/figures/README-plot-1.png)<!-- -->
+![](tools/README-plot-1.png)<!-- -->
 
 ### Doesn’t this already exist?
 
@@ -124,20 +125,28 @@ grDevices::colorRampPalette(colors = c("white", "blue", "black"))(11)[-(c(1:2, 1
 
 ## Installation
 
-To install the latest development version from
+To install the latest release from [CRAN](https://cran.r-project.org)
+
+``` r
+install.packages("tinter")
+```
+
+To install the developmental version from
 [GitHub](https://github.com/poissonconsulting/tinter)
 
-    install.packages("devtools")
-    devtools::install_github("poissonconsulting/err")
-    devtools::install_github("poissonconsulting/checkr")
-    devtools::install_github("poissonconsulting/tinter")
+``` r
+# install.packages("remotes")
+remotes::install_github("poissonconsulting/tinter")
+```
 
-To install the latest development version from the Poisson drat
+To install the latest developmental release from the Poisson drat
 [repository](https://github.com/poissonconsulting/drat)
 
-    install.packages("drat")
-    drat::addRepo("poissonconsulting")
-    install.packages("tinter")
+``` r
+# install.packages("drat")
+drat::addRepo("poissonconsulting")
+install.packages("tinter")
+```
 
 ## Contribution
 
@@ -148,5 +157,5 @@ Please report any
 always welcome.
 
 Please note that this project is released with a [Contributor Code of
-Conduct](CONDUCT.md). By participating in this project you agree to
-abide by its terms.
+Conduct](https://github.com/poissonconsulting/tinter/blob/master/CODE_OF_CONDUCT.md).
+By participating in this project you agree to abide by its terms.
